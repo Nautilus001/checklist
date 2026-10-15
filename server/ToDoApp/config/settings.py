@@ -25,8 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = [host.strip() for host in os.environ.get('ALLOWED_HOSTS', '').split(',') if host.strip()]
 
 # Application definition
 
@@ -148,3 +147,5 @@ CORS_ALLOW_METHODS = [
     "POST",
     "PUT",
 ]
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

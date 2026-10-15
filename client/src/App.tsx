@@ -4,7 +4,7 @@ import { Todo } from './models/todo'
 import axios from 'axios'
 import { parseTodo } from './utils'
 
-const API_URL = 'http://localhost:8000/api/todos/';
+const API_URL = '/api/todos/';
 
 const months: string[] = [
   'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug',
