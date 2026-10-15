@@ -6,6 +6,11 @@ import { parseTodo } from './utils'
 
 const API_URL = 'http://localhost:8000/api/todos/';
 
+const months: string[] = [
+  'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug',
+  'Sep', 'Oct', 'Nov', 'Dec'
+]
+
 function App() {
   const [todos, setTodos] = useState<Todo[]>([])
   const [title, setTitle] = useState<string>("")
@@ -86,38 +91,52 @@ function App() {
               className="todo-input"
             />
             <button type="submit" className="submit-button">
-              Add
+              add
             </button>
           </form>
         </div>
         <div className="todos-container">
           <ul className="todos-list">
+            <li className={`todo-item`}>
+              <span className="todo-text todo-data">
+                <strong>title</strong>
+              </span>
+              <span className="due-date todo-data">
+                <strong>due date</strong> 
+              </span>
+              <button className="delete-button todo-data" style={{color: "#1A2233"}}>
+                <strong>actions</strong>
+              </button>
+            </li>
+          </ul>
+        </div>
+        <hr/>
+        <div className="todos-container">
+          <ul className="todos-list">
             {todos.map((todo) => (
-              <li key={todo.id} className={`todo-text ${todo.completed ? "completed" : ""}`}>
-                <span className="due-date">
-                  <span className="due-date">
-                    {todo.due_at ? (
-                      <>
-                        <span className="due-date-month">
-                          {todo.due_at.getMonth()}
-                        </span>
-                        /
-                        <span className="due-date-day">
-                          {todo.due_at.getDate()}
-                        </span>
-                      </>
-                    ) : (
-                      <span className="due-date-placeholder">--</span>
-                    )}
-                  </span>
-                </span>                
+              <li key={todo.id} className={`todo-item ${todo.completed ? "completed" : ""}`}>
                 <span
                   onClick={()=>{toggleTodo(todo.id, todo.completed)}}
-                  className="todo-text"
+                  className="todo-text todo-data"
                 >
                   {todo.title}
                 </span>
-                <button onClick={()=>{deleteTodo(todo.id)}} className="delete-button">
+                <span className="due-date todo-data">
+                  {todo.due_at ? (
+                    <>
+                      <span className="due-date-month">
+                        {months[todo.due_at.getMonth()]} 
+                      </span>
+                      
+                      <span className="due-date-day">
+                        {todo.due_at.getDate()}
+                      </span>
+                    </>
+                  ) : (
+                    <span className="due-date-placeholder">--</span>
+                  )}
+                </span>
+                <button onClick={()=>{deleteTodo(todo.id)}} className="delete-button todo-data">
                   Delete
                 </button>
               </li>
