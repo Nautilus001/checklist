@@ -1,0 +1,12 @@
+:root{
+    --background: #F7F1E9;
+    --card: #FFFDF8;
+    --text: #1A2233;
+    --accent: #DEA407;
+    --primary: #1C3E8C;
+
+    --font-main: 'Quicksand', sans-serif;
+
+    --radius-lg: 16px;
+    --radius-sm: 8px;
+}
