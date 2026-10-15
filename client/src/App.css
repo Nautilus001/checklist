@@ -47,7 +47,6 @@ form button {
 }
 
 .todos-list {
-  display: flex;
   width: 100%;
   padding-left: 0;
 }

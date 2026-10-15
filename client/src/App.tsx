@@ -95,22 +95,23 @@ function App() {
             </button>
           </form>
         </div>
-        <div className="todos-container">
-          <ul className="todos-list">
-            <li className={`todo-item`}>
-              <span className="todo-text todo-data">
-                <strong>title</strong>
-              </span>
-              <span className="due-date todo-data">
-                <strong>due date</strong> 
-              </span>
-              <button className="delete-button todo-data" style={{color: "#1A2233"}}>
-                <strong>actions</strong>
-              </button>
-            </li>
-          </ul>
-        </div>
-        <hr/>
+        {todos.length !== 0 && 
+          <div className="todos-container">
+            <ul className="todos-list">
+              <li className={`todo-item`}>
+                <span className="todo-text todo-data">
+                  <strong>title</strong>
+                </span>
+                <span className="due-date todo-data">
+                  <strong>due date</strong> 
+                </span>
+                <button className="delete-button todo-data" style={{color: "#1A2233"}}>
+                  <strong>actions</strong>
+                </button>
+              </li>
+            </ul>
+          </div>
+        }
         <div className="todos-container">
           <ul className="todos-list">
             {todos.map((todo) => (
@@ -142,8 +143,8 @@ function App() {
               </li>
             ))}
           </ul>
-          {todos.length === 0 && <p className="empty-message">work is done.</p>}
         </div>
+        {todos.length === 0 && <p className="empty-message">work is done.</p>}
       </div>
     </div>
   )
